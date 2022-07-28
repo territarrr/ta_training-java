@@ -1,6 +1,5 @@
 package com.epam.training.sofiia_uchitel.classes.main_task;
 
-import java.util.List;
 import java.util.Scanner;
 
 /*Создать классы, спецификации которых приведены ниже.

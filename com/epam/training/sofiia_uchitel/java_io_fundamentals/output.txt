@@ -1,0 +1,15 @@
+tstpckg
+├───dir2
+│   ├───filsssssse1.java
+│   └───file2.java
+├───filllle1.java
+└───dir1
+    ├───dir13
+    │   └───file1.java
+    ├───dir12
+    │   └───file1.java
+    ├───file1.java
+    └───dir11
+        ├───dir111
+        ├───file1.java
+        └───file2.java

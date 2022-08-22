@@ -6,9 +6,9 @@ import java.util.concurrent.locks.ReentrantLock;
 public class CarThread implements Runnable {
     private final ReentrantLock locker;
     private final String carNumber;
-    private int maxWaitngTimeInMinutes;
-    private int maxParkingTimeInMinutes;
-    private Parking parking;
+    private final int maxWaitngTimeInMinutes;
+    private final int maxParkingTimeInMinutes;
+    private final Parking parking;
 
     public CarThread(String id, Parking parking, int maxWaitngTimeInMinutes, int maxParkingTimeInMinutes) {
         this.carNumber = id;

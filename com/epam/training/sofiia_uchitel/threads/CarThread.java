@@ -33,43 +33,43 @@ public class CarThread implements Runnable {
 
     @Override
     public void run() {
-        if (!this.parking.hasFreePlaces()) {
-            System.out.printf("На парковке нет свободных мест. Машина с номером %s встает в очередь. Время ожидания свободного места на более %s минут.\n", carNumber, maxWaitngTimeInMinutes);
-        }
-        try {
-            if (this.parking.carSemaphore.tryAcquire(maxWaitngTimeInMinutes, TimeUnit.MINUTES)) {
-                locker.lock();
-                try {
-                    int parkingPlace = parking.letCarIn(this);
-                    System.out.printf("Машина с номером %s припарковалась на месте #%s. \n", carNumber, parkingPlace);
-                } catch (Exception e) {
-                    System.out.println(e.getMessage());
-                } finally {
-                    locker.unlock();
-                }
-                System.out.printf("Машина с номером %s будет занимать место %d минут.", carNumber, maxParkingTimeInMinutes);
-                System.out.printf("Свободных мест на стоянке: %d\n", parking.getCountOfFreePlaces());
-
-                TimeUnit.MINUTES.sleep(maxParkingTimeInMinutes);
-
-                locker.lock();
-                try {
-                    parking.letCarOut(this);
-                } catch (Exception e) {
-                    System.out.println(e.getMessage());
-                } finally {
-                    locker.unlock();
-                }
-                System.out.printf("Машина с номером %s освободила место на стоянке. ", carNumber);
-                System.out.printf("Свободных мест на стоянке: %d\n", parking.getCountOfFreePlaces());
-
-                parking.carSemaphore.release();
-            } else {
-                System.out.printf("Максимальное время ожидания для машины с номером %s превышено. Машина покидает очередь\n", carNumber);
-            }
-        } catch (InterruptedException e) {
-            System.out.println(e.getMessage());
-        }
+//        if (!this.parking.hasFreePlaces()) {
+//            System.out.printf("На парковке нет свободных мест. Машина с номером %s встает в очередь. Время ожидания свободного места на более %s минут.\n", carNumber, maxWaitngTimeInMinutes);
+//        }
+//        try {
+//            if (this.parking.carSemaphore.tryAcquire(maxWaitngTimeInMinutes, TimeUnit.MINUTES)) {
+//                locker.lock();
+//                try {
+//                    int parkingPlace = parking.letCarIn(car);
+//                    System.out.printf("Машина с номером %s припарковалась на месте #%s. \n", carNumber, parkingPlace);
+//                } catch (Exception e) {
+//                    System.out.println(e.getMessage());
+//                } finally {
+//                    locker.unlock();
+//                }
+//                System.out.printf("Машина с номером %s будет занимать место %d минут.", carNumber, maxParkingTimeInMinutes);
+//                System.out.printf("Свободных мест на стоянке: %d\n", parking.getCountOfFreePlaces());
+//
+//                TimeUnit.MINUTES.sleep(maxParkingTimeInMinutes);
+//
+//                locker.lock();
+//                try {
+//                    parking.letCarOut(this);
+//                } catch (Exception e) {
+//                    System.out.println(e.getMessage());
+//                } finally {
+//                    locker.unlock();
+//                }
+//                System.out.printf("Машина с номером %s освободила место на стоянке. ", carNumber);
+//                System.out.printf("Свободных мест на стоянке: %d\n", parking.getCountOfFreePlaces());
+//
+//                parking.carSemaphore.release();
+//            } else {
+//                System.out.printf("Максимальное время ожидания для машины с номером %s превышено. Машина покидает очередь\n", carNumber);
+//            }
+//        } catch (InterruptedException e) {
+//            System.out.println(e.getMessage());
+//        }
     }
 
 }

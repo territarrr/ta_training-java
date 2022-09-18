@@ -10,12 +10,14 @@ public class Main {
         final int MAX_WAIT_AND_PARKING_TIME_IN_MINUTES = 3;
         Parking carParking = new Parking(3);
         for (int i = 1; i <= 10; i++) {
-            CarThread car = new CarThread("car" + i, carParking, (int) (Math.random() * (MAX_WAIT_AND_PARKING_TIME_IN_MINUTES)) + 1, (int) (Math.random() * MAX_WAIT_AND_PARKING_TIME_IN_MINUTES) + 1);
-            try {
-                Thread.sleep(100);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
+            Car car = new Car("car" + i, (int) (Math.random() * (MAX_WAIT_AND_PARKING_TIME_IN_MINUTES)) + 1, (int) (Math.random() * MAX_WAIT_AND_PARKING_TIME_IN_MINUTES) + 1);
+            new Thread(new CarRunnable(carParking, car));
+
+//            try {
+//                Thread.sleep(100);
+//            } catch (InterruptedException e) {
+//                throw new RuntimeException(e);
+//            }
         }
 
     }

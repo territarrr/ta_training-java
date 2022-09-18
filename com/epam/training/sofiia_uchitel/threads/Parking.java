@@ -7,7 +7,7 @@ import java.util.concurrent.Semaphore;
 public class Parking {
     private final int countOfPlaces;
     public final Semaphore carSemaphore;
-    private final List<CarThread> places;
+    private final List<Car> places;
 
     public Parking(int countOfPlaces) {
         this.countOfPlaces = countOfPlaces;
@@ -18,9 +18,9 @@ public class Parking {
         }
     }
 
-    public int getCountOfFreePlaces() {
+    public synchronized int getCountOfFreePlaces() {
         int freePlaces = 0;
-        for (CarThread place : places) {
+        for (Car place : places) {
             if (place == null) {
                 freePlaces++;
             }
@@ -28,11 +28,11 @@ public class Parking {
         return freePlaces;
     }
 
-    public boolean hasFreePlaces() {
+    public synchronized boolean hasFreePlaces() {
         return places.contains(null);
     }
 
-    public int letCarIn(CarThread car) {
+    public synchronized int letCarIn(Car car) {
         for (int i = 0; i < countOfPlaces; i++) {
             if (places.get(i) == null) {
                 places.set(i, car);
@@ -42,7 +42,7 @@ public class Parking {
         return -1;
     }
 
-    public void letCarOut(CarThread car) {
+    public synchronized void letCarOut(Car car) {
         for (int i = 0; i < countOfPlaces; i++) {
             if (places.get(i) == car) {
                 places.set(i, null);

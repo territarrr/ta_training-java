@@ -14,7 +14,11 @@ public class Student {
     public Student(String name, String surname, HashSet<Subject> subjects) {
         this.name = name;
         this.surname = surname;
-        setSubjects(subjects);
+        if (subjects.isEmpty()) {
+            throw new SubjectCountException("У студента должен быть хотя бы один предмет!");
+        } else {
+            this.subjects = subjects;
+        }
     }
 
     public String getName() {
@@ -35,14 +39,6 @@ public class Student {
 
     public HashSet<Subject> getSubjects() {
         return subjects;
-    }
-
-    public void setSubjects(HashSet<Subject> subjects) {
-        if (subjects.isEmpty()) {
-            throw new SubjectCountException("У студента должен быть хотя бы один предмет!");
-        } else {
-            this.subjects = subjects;
-        }
     }
 
     //Изучает ли студент предмет

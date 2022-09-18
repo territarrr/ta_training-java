@@ -11,7 +11,11 @@ public class Faculty {
 
     public Faculty(String name, HashSet<Group> groups) {
         this.name = name;
-        setGroups(groups);
+        if (groups.isEmpty()) {
+            throw new GroupCountException("На факультете должна быть хотя бы одна группа.");
+        } else {
+            this.groups = groups;
+        }
     }
 
     public String getName() {
@@ -20,14 +24,6 @@ public class Faculty {
 
     public HashSet<Group> getGroups() {
         return groups;
-    }
-
-    public void setGroups(HashSet<Group> groups) {
-        if (groups.isEmpty()) {
-            throw new GroupCountException("На факультете должна быть хотя бы одна группа.");
-        } else {
-            this.groups = groups;
-        }
     }
 
     public void addGroup(Group group) {

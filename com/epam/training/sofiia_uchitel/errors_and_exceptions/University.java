@@ -2,7 +2,6 @@ package com.epam.training.sofiia_uchitel.errors_and_exceptions;
 
 import com.epam.training.sofiia_uchitel.errors_and_exceptions.exception.FacultetsCountException;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 
 public class University {
@@ -11,7 +10,11 @@ public class University {
 
     public University(String name, HashSet<Faculty> faculties) {
         this.name = name;
-        setFaculties(faculties);
+        if (faculties.isEmpty()) {
+            throw new FacultetsCountException("В университете должен быть хотя бы один факультет.");
+        } else {
+            this.faculties = faculties;
+        }
     }
 
     public String getName() {
@@ -20,14 +23,6 @@ public class University {
 
     public HashSet<Faculty> getFaculties() {
         return faculties;
-    }
-
-    public void setFaculties(HashSet<Faculty> faculties) {
-        if (faculties.isEmpty()) {
-            throw new FacultetsCountException("В университете должен быть хотя бы один факультет.");
-        } else {
-            this.faculties = faculties;
-        }
     }
 
     //Получить всех студентов унивепситета

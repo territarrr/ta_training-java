@@ -10,7 +10,10 @@ public class Subject {
 
     public Subject(String name, int grade) throws GradeException {
         this.name = name;
-        setGrade(grade);
+        if (grade < 0 || grade > 10) {
+            throw new GradeException("Оценка должна быть от 0 до 10!");
+        }
+        this.grade = grade;
     }
 
     public String getName() {
@@ -19,13 +22,6 @@ public class Subject {
 
     public int getGrade() {
         return grade;
-    }
-
-    public void setGrade(int grade) throws GradeException {
-        if (grade < 0 || grade > 10) {
-            throw new GradeException("Оценка должна быть от 0 до 10!");
-        }
-        this.grade = grade;
     }
 
     @Override

@@ -1,25 +1,25 @@
 package com.epam.training.sofiia_uchitel.threads;
 
 public class Car {
-    private final String carNumber;
-    private final int maxWaitngTimeInMinutes;
-    private final int maxParkingTimeInMinutes;
+    private final String number;
+    private final int maxWaitingTime;
+    private final int maxParkingTime;
 
-    public Car(String carNumber, int maxWaitngTimeInMinutes, int maxParkingTimeInMinutes) {
-        this.carNumber = carNumber;
-        this.maxWaitngTimeInMinutes = maxWaitngTimeInMinutes;
-        this.maxParkingTimeInMinutes = maxParkingTimeInMinutes;
+    public Car(String number, int maxWaitingTime, int maxParkingTime) {
+        this.number = number;
+        this.maxWaitingTime = maxWaitingTime;
+        this.maxParkingTime = maxParkingTime;
     }
 
-    public String getCarNumber() {
-        return carNumber;
+    public String getNumber() {
+        return number;
     }
 
-    public int getMaxWaitngTimeInMinutes() {
-        return maxWaitngTimeInMinutes;
+    public int getMaxWaitingTime() {
+        return maxWaitingTime;
     }
 
-    public int getMaxParkingTimeInMinutes() {
-        return maxParkingTimeInMinutes;
+    public int getMaxParkingTime() {
+        return maxParkingTime;
     }
 }

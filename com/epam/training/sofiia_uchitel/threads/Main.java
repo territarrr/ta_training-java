@@ -5,20 +5,14 @@ package com.epam.training.sofiia_uchitel.threads;
 // Автостоянка. Доступно несколько машиномест. На одном месте может находиться только один автомобиль.
 // Если все места заняты, то автомобиль не станет ждать больше определенного времени и уедет на другую стоянку.
 public class Main {
+    private static final int MAX_TIME = 10;
+    private static final int CARS_COUNT = 5;
+
     public static void main(String[] args) {
-        //Для наглядности все машины мтоят в очереди или занимают парковочное место от 1 до 3 минут
-        final int MAX_WAIT_AND_PARKING_TIME_IN_MINUTES = 3;
-        Parking carParking = new Parking(3);
-        for (int i = 1; i <= 10; i++) {
-            Car car = new Car("car" + i, (int) (Math.random() * (MAX_WAIT_AND_PARKING_TIME_IN_MINUTES)) + 1, (int) (Math.random() * MAX_WAIT_AND_PARKING_TIME_IN_MINUTES) + 1);
-            new Thread(new CarRunnable(carParking, car));
-
-//            try {
-//                Thread.sleep(100);
-//            } catch (InterruptedException e) {
-//                throw new RuntimeException(e);
-//            }
+        Parking parking = new Parking(3);
+        for (int i = 1; i <= CARS_COUNT; i++) {
+            Car car = new Car("car" + i, (int) (Math.random() * (MAX_TIME)) + 1, (int) (Math.random() * MAX_TIME) + 1);
+            new Thread(new CarThread(parking, car)).start();
         }
-
     }
 }

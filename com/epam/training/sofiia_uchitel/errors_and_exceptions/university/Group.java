@@ -1,4 +1,4 @@
-package com.epam.training.sofiia_uchitel.errors_and_exceptions;
+package com.epam.training.sofiia_uchitel.errors_and_exceptions.university;
 
 import com.epam.training.sofiia_uchitel.errors_and_exceptions.exception.StudentsCountException;
 

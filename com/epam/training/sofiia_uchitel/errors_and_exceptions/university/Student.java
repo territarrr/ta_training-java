@@ -1,17 +1,17 @@
-package com.epam.training.sofiia_uchitel.errors_and_exceptions;
+package com.epam.training.sofiia_uchitel.errors_and_exceptions.university;
 
 import com.epam.training.sofiia_uchitel.errors_and_exceptions.exception.SubjectCountException;
 
-import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 
 public class Student {
     private String name;
     private String surname;
-    private HashSet<Subject> subjects;
+    private Set<Subject> subjects;
 
-    public Student(String name, String surname, HashSet<Subject> subjects) {
+    public Student(String name, String surname, Set<Subject> subjects) {
         this.name = name;
         this.surname = surname;
         if (subjects.isEmpty()) {
@@ -37,7 +37,7 @@ public class Student {
         this.surname = surname;
     }
 
-    public HashSet<Subject> getSubjects() {
+    public Set<Subject> getSubjects() {
         return subjects;
     }
 
@@ -75,7 +75,7 @@ public class Student {
 
     @Override
     public String toString() {
-        return "Student{" + "name='" + name + '\'' + ", surname='" + surname + '\'' + ", subjects=" + subjects + '}';
+        return name + " " + surname +" изучает предметы " + subjects;
     }
 
     //Проверка равенства объектов по имени и фамилии для hashSet

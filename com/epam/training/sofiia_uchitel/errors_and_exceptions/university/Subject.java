@@ -1,4 +1,4 @@
-package com.epam.training.sofiia_uchitel.errors_and_exceptions;
+package com.epam.training.sofiia_uchitel.errors_and_exceptions.university;
 
 import com.epam.training.sofiia_uchitel.errors_and_exceptions.exception.GradeException;
 
@@ -26,10 +26,7 @@ public class Subject {
 
     @Override
     public String toString() {
-        return "Subject{" +
-                "name='" + name + '\'' +
-                ", grade=" + grade +
-                '}';
+        return name +" - " + grade;
     }
 
     //Проверка равенства объектов по имени для hashSet
